@@ -9,7 +9,8 @@ class Book {
 
   Book(Map<String, dynamic> book) {
     reference = book["book"];
-    List<Map<String, dynamic>> chapters = book["chapters"];
+    print(reference);
+    List<dynamic> chapters = book["chapters"];
     head = Chapter(chapters.removeAt(0));
 
     Chapter prev = head;

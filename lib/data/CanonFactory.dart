@@ -1,8 +1,15 @@
+import 'package:scripture_search/SplashPresenter.dart';
+import 'package:scripture_search/data/DataInterface.dart';
 import 'package:scripture_search/data/Work.dart';
-import 'package:scripture_search/data/json/BookOfMormon.dart';
 import 'Canon.dart';
 
 class CanonFactory {
+  static String BOOK_OF_MORMON = "book-of-mormon";
+  static String OLD_TESTAMENT = "old-testament";
+  static String NEW_TESTAMENT = "new-testament";
+  static String DOCTRINE_AND_COVENANTS = "doctrine-and-covenants";
+  static List<String> BOOKS = [BOOK_OF_MORMON];
+
   static CanonFactory? _factory;
 
   static CanonFactory getInstance() {
@@ -12,13 +19,15 @@ class CanonFactory {
     return _factory!;
   }
 
-  static const List<String> BOOKS = [
-    Canon.BOOK_OF_MORMON
-  ];
-
-  Canon makeCanon() {
+  Future<Canon> makeCanon(SplashPresenter presenter) async {
     Canon canon = Canon.getInstance();
-    canon.addWork(Canon.BOOK_OF_MORMON, Work(BookOfMormon.content));
+    DataInterface data = DataInterface.getInstance();
+    await data.init(BOOKS);
+    canon.addWork(Work(data.get(BOOK_OF_MORMON)));
+    // await canon.addWork(Work(NewTestament.content));
+    // await canon.addWork(Work(OldTestament.content));
+    // await canon.addWork(Work(PearlOfGreatPrice.content));
+    // await canon.addWork(Work(DoctrineAndCovenants.content));
 
     return canon;
   }

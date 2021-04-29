@@ -19,10 +19,7 @@ class _HomeViewState extends State<HomeView> {
       appBar: AppBar(
         title: Text("Search the Scriptures"),
       ),
-      body: Container(
-          child: SingleChildScrollView(
-        child: Text(widget.presenter.allText, style: TextStyle(fontSize: 3.2)),
-      )),
+      body: Container(),
     );
   }
 }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'SplashView.dart';
 
-import 'home/HomeView.dart';
+void main() async {
+  await WidgetsFlutterBinding.ensureInitialized();
 
-void main() {
   runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeView(),
+      home: SplashView(),
   ));
 }
-

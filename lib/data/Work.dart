@@ -1,12 +1,15 @@
+import 'dart:convert';
+
 import 'Book.dart';
 
 class Work {
   late Book head;
   late String reference;
 
-  Work(Map<String, dynamic> book) {
-    reference = book["title"];
-    List<Map<String, dynamic>> books = book["books"];
+  Work(String text) {
+    Map<String, dynamic> json = jsonDecode(text);
+    reference = json["title"];
+    List<dynamic> books = json["books"];
     head = Book(books.removeAt(0));
 
     Book prev = head;
