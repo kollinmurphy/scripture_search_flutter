@@ -1,3 +1,5 @@
+import 'package:scripture_search/data/Work.dart';
+
 import 'Book.dart';
 
 class Canon {
@@ -7,10 +9,10 @@ class Canon {
   static const String DOCTRINE_COVENANTS = "doctrine-and-covenants";
   static const String PEARL_GREAT_PRICE = "pearl-of-great-price";
 
-  Map<String, Book> _canon = Map();
+  Map<String, Work> _canon = Map();
 
-  void addBook(String name, Book book) {
-    _canon[name] = book;
+  void addWork(String name, Work work) {
+    _canon[name] = work;
   }
 
   static Canon? _instance;
@@ -21,4 +23,6 @@ class Canon {
     }
     return _instance!;
   }
+
+  String getText(String book) => _canon[book]?.text ?? "";
 }

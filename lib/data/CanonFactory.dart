@@ -1,7 +1,6 @@
-import 'package:scripture_search/data/Canon.dart';
+import 'package:scripture_search/data/Work.dart';
 import 'package:scripture_search/data/json/BookOfMormon.dart';
-
-import 'Book.dart';
+import 'Canon.dart';
 
 class CanonFactory {
   static CanonFactory? _factory;
@@ -19,7 +18,7 @@ class CanonFactory {
 
   Canon makeCanon() {
     Canon canon = Canon.getInstance();
-    canon.addBook(Canon.BOOK_OF_MORMON, Book(BookOfMormon.content));
+    canon.addWork(Canon.BOOK_OF_MORMON, Work(BookOfMormon.content));
 
     return canon;
   }

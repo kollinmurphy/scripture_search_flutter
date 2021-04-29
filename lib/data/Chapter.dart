@@ -18,9 +18,20 @@ class Chapter {
     chapter["verses"].forEach((element) {
       thisVerse = Verse(element["reference"], element["text"]);
       thisVerse.previous = prev;
+      prev.next = thisVerse;
       prev = thisVerse;
     });
   }
 
   get reference => _reference;
+
+  String get text {
+    String text = head.text;
+    Verse? curr = head;
+    while (curr?.next != null) {
+      text += " ${curr?.next!.text}";
+      curr = curr?.next;
+    }
+    return text;
+  }
 }

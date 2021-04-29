@@ -10,9 +10,7 @@ class Verse {
     parseWords(text);
   }
 
-  List<Word> parseWords(String text) {
-    List<Word> words = [];
-
+  void parseWords(String text) {
     List<String> split = text.split(" ");
     head = Word(split.removeAt(0));
     Word prev = head;
@@ -21,11 +19,20 @@ class Verse {
     split.forEach((element) {
       thisWord = Word(element);
       thisWord.previous = prev;
-      words.add(thisWord);
+      prev.next = thisWord;
       prev = thisWord;
     });
-    return words;
   }
 
   get reference => _reference;
+
+  String get text {
+    String text = head.content;
+    Word? curr = head;
+    while (curr?.next != null) {
+      text += " ${curr?.next!.content}";
+      curr = curr?.next;
+    }
+    return text;
+  }
 }

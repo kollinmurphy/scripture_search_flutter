@@ -15,6 +15,14 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Search the Scriptures"),
+      ),
+      body: Container(
+          child: SingleChildScrollView(
+        child: Text(widget.presenter.allText, style: TextStyle(fontSize: 3.2)),
+      )),
+    );
   }
 }
