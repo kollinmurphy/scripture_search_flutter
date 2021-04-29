@@ -22,6 +22,7 @@ class DataInterface {
       String contents;
       if (!(await file.exists())) {
         contents = await WebInterface.instance.getBook(element);
+        file.writeAsString(contents);
       } else {
         contents = await file.readAsString();
       }

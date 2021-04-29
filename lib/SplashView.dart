@@ -34,6 +34,7 @@ class _SplashViewState extends State<SplashView>
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: 36.0)))),
+            Image.asset("assets/spinner.gif"),
             Expanded(
                 child: Text(presenter.message,
                     style: TextStyle(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'SplashView.dart';
 
 void main() async {
-  await WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
 
   runApp(MaterialApp(
       debugShowCheckedModeBanner: false,

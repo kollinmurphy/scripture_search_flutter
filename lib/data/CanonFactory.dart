@@ -4,11 +4,19 @@ import 'package:scripture_search/data/Work.dart';
 import 'Canon.dart';
 
 class CanonFactory {
-  static String BOOK_OF_MORMON = "book-of-mormon";
-  static String OLD_TESTAMENT = "old-testament";
-  static String NEW_TESTAMENT = "new-testament";
-  static String DOCTRINE_AND_COVENANTS = "doctrine-and-covenants";
-  static List<String> BOOKS = [BOOK_OF_MORMON];
+  static const String BOOK_OF_MORMON = "book-of-mormon";
+  static const String OLD_TESTAMENT = "old-testament";
+  static const String NEW_TESTAMENT = "new-testament";
+  static const String DOCTRINE_AND_COVENANTS = "doctrine-and-covenants";
+  static const String PEARL_OF_GREAT_PRICE = "pearl-of-great-price";
+
+  static const List<String> BOOKS = [
+    BOOK_OF_MORMON,
+    OLD_TESTAMENT,
+    NEW_TESTAMENT,
+    DOCTRINE_AND_COVENANTS,
+    PEARL_OF_GREAT_PRICE
+  ];
 
   static CanonFactory? _factory;
 
@@ -23,12 +31,9 @@ class CanonFactory {
     Canon canon = Canon.getInstance();
     DataInterface data = DataInterface.getInstance();
     await data.init(BOOKS);
-    canon.addWork(Work(data.get(BOOK_OF_MORMON)));
-    // await canon.addWork(Work(NewTestament.content));
-    // await canon.addWork(Work(OldTestament.content));
-    // await canon.addWork(Work(PearlOfGreatPrice.content));
-    // await canon.addWork(Work(DoctrineAndCovenants.content));
-
+    for (String book in BOOKS) {
+      canon.addWork(Work(data.get(book)));
+    }
     return canon;
   }
 }
